@@ -1,16 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import puppeteer from 'puppeteer';
 import { ComputerUpsertService } from 'src/computers/service/computer-upsert.service';
+import { HandleInput } from './dto/handle.input';
 
 @Injectable()
 export class ScrapperService {
   constructor(private computerUpsertService: ComputerUpsertService) {}
 
-  async handle(
-    linkToScrapper: string,
-    selector: string,
-    filterBy: string,
-  ): Promise<string[]> {
+  async handle({
+    selector,
+    linkToScrapper,
+    filterBy,
+  }: HandleInput): Promise<string[]> {
     try {
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
