@@ -24,6 +24,15 @@ export class ComputerUpsertService {
 
       return;
     }
-    await this.computerModel.create(createComputerDto);
+    const orderNotesByPrice = createComputerDto.notes.sort(
+      (note, noteCompare) =>
+        +note.price.replace('$', '') - +noteCompare.price.replace('$', ''),
+    );
+    await this.computerModel.create({
+      link: createComputerDto.link,
+      groupBy: createComputerDto.groupBy,
+      updateAt: createComputerDto.updateAt,
+      notes: orderNotesByPrice,
+    });
   }
 }
