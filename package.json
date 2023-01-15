@@ -27,6 +27,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/schedule": "^2.1.0",
+    "mongoose": "^6.8.3",
     "puppeteer": "^19.5.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
